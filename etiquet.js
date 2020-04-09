@@ -22,14 +22,17 @@ class Lavel
     {
         if(this.Node!==undefined)
         {
-            if(list_etiq_hijo.length>0)
-            {
-                for(let i in list_etiq_hijo)
+            if(list_etiq_hijo!==undefined){
+
+                if(list_etiq_hijo.length>0)
                 {
-                    this.Node.appendChild(list_etiq_hijo[i].Node);
+                    for(let i in list_etiq_hijo)
+                    {
+                        this.Node.appendChild(list_etiq_hijo[i].Node);
+                    }
+                }else{
+                    this.Node.appendChild(list_etiq_hijo.Node);
                 }
-            }else{
-                this.Node.appendChild(list_etiq_hijo.Node);
             }
         }
     }
@@ -60,12 +63,14 @@ class Lavel
         this.root=root;
         if(this.Node!==undefined){
             
-            root.innerHTML='';
             if(typeof(root)=='string')
             {
+
                 let r=document.querySelector(root);
+                r.innerHTML='';
                 r.appendChild(this.Node);
             }else if(typeof(root)=='object'){
+                root.innerHTML='';
                 root.appendChild(this.Node);
             }
         }
