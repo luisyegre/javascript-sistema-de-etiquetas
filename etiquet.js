@@ -54,10 +54,6 @@ class Lavel
             }
         }   
     }
-    delete(){
-        this.Node=undefined;
-        this.root.innerHTML='';
-    }
     render(root)
     {   
         this.root=root;
@@ -76,4 +72,16 @@ class Lavel
         }
         return this.Node;
     }
+    remove(){
+        this.Node=undefined;
+        if(typeof(this.root)==='object'){
+            this.root.innerHTML='';
+        }
+        else{
+            let r=document.querySelector(this.root);
+            r.innerHTML='';
+        }   
+    }
 }
+
+                
