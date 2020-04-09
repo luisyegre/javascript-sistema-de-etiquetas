@@ -10,11 +10,11 @@ class Lavel
     constructor(obj)
     {
         this.Et=obj.Et;
-        
+        this.root;
         this.listChild=obj.Child;
         this.Node=document.createElement(this.Et);
-        if(obj.props!==undefined){
-            this.set_props(obj.props);
+        if(obj.Props!==undefined){
+            this.setProps(obj.Props);
         } 
         this.Child=this.addChild(this.listChild);
     }
@@ -22,16 +22,18 @@ class Lavel
     {
         if(this.Node!==undefined)
         {
-            if(list_etiq_hijo)
+            if(list_etiq_hijo.length>0)
             {
                 for(let i in list_etiq_hijo)
                 {
                     this.Node.appendChild(list_etiq_hijo[i].Node);
                 }
+            }else{
+                this.Node.appendChild(list_etiq_hijo.Node);
             }
         }
     }
-    set_props(props)
+    setProps(props)
     {
         if(this.Node!==undefined)
         {
@@ -50,10 +52,12 @@ class Lavel
         }   
     }
     delete(){
-        self.Node=undefined;
+        this.Node=undefined;
+        this.root.innerHTML='';
     }
     render(root)
     {   
+        this.root=root;
         if(this.Node!==undefined){
             
             root.innerHTML='';
